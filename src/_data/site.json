@@ -1,0 +1,28 @@
+{
+  "name": "EDGE",
+  "fullName": "Energy Development Group Exchange",
+  "tagline": "Texas Energy Independence Starts Here",
+  "description": "EDGE provides complete home energy solutions with solar, battery storage, and whole-home backup power for Texas homeowners. Fixed rates, no upfront costs, total grid independence.",
+  "url": "https://edgeenergy.com",
+  "phone": "(512) 555-EDGE",
+  "email": "info@edgeenergy.com",
+  "address": {
+    "street": "",
+    "city": "Houston",
+    "state": "TX",
+    "zip": ""
+  },
+  "social": {
+    "facebook": "",
+    "instagram": "",
+    "linkedin": "",
+    "twitter": ""
+  },
+  "colors": {
+    "primary": "#22c55e",
+    "primaryDark": "#166534",
+    "primaryLight": "#4ade80",
+    "dark": "#0f172a",
+    "light": "#f8fafc"
+  }
+}

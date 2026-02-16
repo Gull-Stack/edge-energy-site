@@ -1,0 +1,122 @@
+---
+title: "FAQ | EDGE Home Energy System Questions Answered"
+description: "Get answers to common questions about EDGE home microgrid systems. Learn about costs, installation, backup power, and how EDGE works for Texas homeowners."
+---
+{% extends "base.njk" %}
+
+{% block content %}
+<section class="page-header">
+  <div class="container">
+    <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> FAQ</nav>
+    <h1>Frequently Asked Questions</h1>
+    <p>Everything you need to know about EDGE home energy systems.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">What exactly is EDGE?</button>
+        <div class="faq-answer">
+          <p>EDGE (Energy Development Group Exchange) is a complete home energy service that combines maximum solar production with a massive 80kWh battery bank. Your EDGE system provides consistent, reliable energy regardless of what happens to the grid. The excess power and storage helps support the grid during peak demand, and in exchange you get a low, fixed rate for the power you use.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question">Who qualifies for EDGE?</button>
+        <div class="faq-answer">
+          <p>All Texas homeowners qualify. There's no credit check, no income verification, and no impact to your credit score. You simply need to own your home and be located in Texas.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question">How much does EDGE cost?</button>
+        <div class="faq-answer">
+          <p>There are no upfront costs to get started. Your monthly payment is fixed for 30 years at a rate equivalent to $0.12 per kWh of your energy usage. There are no escalations, no hidden fees, and no surprises.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question">Will I still have a utility bill?</button>
+        <div class="faq-answer">
+          <p>Yes, you'll always stay connected to the grid. Most EDGE customers only pay a small base fee to their utility company (typically $10-20/month). If you use more power than your system produces, you'll buy the extra at a reduced rate.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question">What happens during a power outage?</button>
+        <div class="faq-answer">
+          <p>When the grid fails, your EDGE system automatically switches to backup mode within milliseconds. Your 80kWh battery bank can power your entire home — including refrigerators, lights, outlets, HVAC, and more — for extended periods. You won't even notice the grid went down.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question">Why do you cover my entire roof with solar?</button>
+        <div class="faq-answer">
+          <p>We maximize your roof space to future-proof your home, deliver the greatest savings, and provide maximum support for the grid. More solar means more energy production, more battery charging capacity, and more backup power during outages.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question">Why such a large battery bank (80kWh)?</button>
+        <div class="faq-answer">
+          <p>The six-battery setup (80kWh total) is designed for whole-home backup — not just keeping a few lights on, but running your entire home including HVAC during extended outages. It also allows participation in grid support programs that further reduce your costs.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question">Do I need to claim tax credits?</button>
+        <div class="faq-answer">
+          <p>No. All tax credits and depreciation are handled by our investment partners. You simply enjoy predictable energy costs with no tax paperwork and no financing burden.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question">What if I move?</button>
+        <div class="faq-answer">
+          <p>Your EDGE system stays with the home, adds resale value, and transfers seamlessly to the next homeowner. There's a one-time $500 transfer fee to switch the service to the new owner.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question">Do I own the equipment?</button>
+        <div class="faq-answer">
+          <p>No — EDGE is structured as a service, not an equipment purchase. You don't own the equipment, which means you also don't have to worry about maintenance, repairs, or replacement costs. We handle everything.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question">What's included in the 20-year guarantee?</button>
+        <div class="faq-answer">
+          <p>Your system is fully insured and guaranteed to perform for 20 years. If any component fails or underperforms, we repair or replace it at no cost to you. We also provide 24/7 monitoring and proactive maintenance.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question">How long does installation take?</button>
+        <div class="faq-answer">
+          <p>Most EDGE installations are completed in 1-2 days. The entire process from agreement to activation — including permitting and utility interconnection — typically takes 4-8 weeks depending on your local permitting office.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container fade-up">
+    <h2>Still Have Questions?</h2>
+    <p>Our team is here to help. Get a free consultation and we'll answer all your questions.</p>
+    <a href="/contact/" class="btn btn-primary btn-lg">Contact Us →</a>
+  </div>
+</section>
+
+<script>
+document.querySelectorAll('.faq-question').forEach(button => {
+  button.addEventListener('click', () => {
+    const item = button.parentElement;
+    item.classList.toggle('active');
+  });
+});
+</script>
+{% endblock %}

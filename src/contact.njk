@@ -1,0 +1,98 @@
+---
+title: "Contact EDGE | Get Your Free Energy Analysis"
+description: "Contact EDGE for a free home energy analysis. See how much you can save with solar and battery backup. No credit check, no obligation."
+---
+{% extends "base.njk" %}
+
+{% block content %}
+<section class="page-header">
+  <div class="container">
+    <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> Contact</nav>
+    <h1>Get Your Free Energy Analysis</h1>
+    <p>See exactly how much you can save with EDGE. No credit check, no obligation.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="fade-up">
+        <h2>Start Your Energy Journey</h2>
+        <p>Fill out the form and one of our energy consultants will contact you within 24 hours with your personalized analysis.</p>
+        
+        <div style="margin-top: 40px;">
+          <h4 style="margin-bottom: 16px;">What to Expect:</h4>
+          <ul class="benefits-list">
+            <li>
+              <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <div>
+                <h4>Free Analysis</h4>
+                <p>We'll review your energy usage and show you exactly what you'll save.</p>
+              </div>
+            </li>
+            <li>
+              <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <div>
+                <h4>Custom Design</h4>
+                <p>A system designed specifically for your home and energy needs.</p>
+              </div>
+            </li>
+            <li>
+              <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <div>
+                <h4>No Pressure</h4>
+                <p>We're here to educate and inform, not pressure you into anything.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="fade-up">
+        <form action="/api/contact" method="POST" style="background: var(--slate-50); padding: 32px; border-radius: var(--radius-lg);">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="address">Home Address</label>
+            <input type="text" id="address" name="address" placeholder="Street address, City, TX">
+          </div>
+          
+          <div class="form-group">
+            <label for="bill">Average Monthly Electric Bill</label>
+            <select id="bill" name="bill">
+              <option value="">Select range...</option>
+              <option value="under-150">Under $150</option>
+              <option value="150-250">$150 - $250</option>
+              <option value="250-350">$250 - $350</option>
+              <option value="350-500">$350 - $500</option>
+              <option value="over-500">Over $500</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Questions or Comments</label>
+            <textarea id="message" name="message" placeholder="Tell us about your energy goals..."></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Get My Free Analysis</button>
+          
+          <p style="font-size: 0.875rem; color: var(--slate-500); margin-top: 16px; text-align: center;">No credit check required. Your information is secure.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
