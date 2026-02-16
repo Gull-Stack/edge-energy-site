@@ -7,7 +7,7 @@ description: "EDGE delivers complete home energy solutions to San Antonio homeow
 {% block content %}
 <section class="page-header">
   <div class="container">
-    <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/locations/">Locations</a> <span>/</span> San Antonio</nav>
+    <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <a href="{{ '/locations/' | url }}">Locations</a> <span>/</span> San Antonio</nav>
     <h1>San Antonio Home Energy Solutions</h1>
     <p>Reliable power for the Alamo City — from Stone Oak to Southtown, Helotes to New Braunfels.</p>
   </div>
@@ -22,10 +22,10 @@ description: "EDGE delivers complete home energy solutions to San Antonio homeow
         <p>CPS Energy serves San Antonio, but that doesn't mean you're immune to the ERCOT grid's problems. When the state grid fails, SA goes dark too — as Winter Storm Uri proved.</p>
         <p>EDGE gives San Antonio families energy independence. Maximum solar for South Texas sunshine. 80kWh of battery storage for days of backup power. Whole-home coverage when the grid fails.</p>
         <p>Lock in $0.12/kWh for 30 years while energy costs continue to rise.</p>
-        <a href="/contact/" class="btn btn-primary">Get Your SA Energy Analysis</a>
+        <a href="{{ '/contact/' | url }}" class="btn btn-primary">Get Your SA Energy Analysis</a>
       </div>
       <div class="benefits-image fade-up">
-        <img src="/images/hero-home.jpg" alt="San Antonio home with EDGE solar system">
+        <img src="{{ '/images/hero-home.jpg' | url }}" alt="San Antonio home with EDGE solar system">
       </div>
     </div>
   </div>
@@ -82,7 +82,7 @@ description: "EDGE delivers complete home energy solutions to San Antonio homeow
       <div class="location-card fade-up" style="padding: 20px;"><h4 style="margin-bottom: 0;">Converse</h4></div>
     </div>
     
-    <p style="text-align: center; margin-top: 32px; color: var(--slate-600);">Don't see your area? <a href="/contact/">Contact us</a> — we likely serve your neighborhood.</p>
+    <p style="text-align: center; margin-top: 32px; color: var(--slate-600);">Don't see your area? <a href="{{ '/contact/' | url }}">Contact us</a> — we likely serve your neighborhood.</p>
   </div>
 </section>
 
@@ -90,7 +90,7 @@ description: "EDGE delivers complete home energy solutions to San Antonio homeow
   <div class="container fade-up">
     <h2>Ready for SA Energy Independence?</h2>
     <p>Join thousands of San Antonio homeowners who've taken control of their power.</p>
-    <a href="/contact/" class="btn btn-primary btn-lg">Get Your Free Analysis →</a>
+    <a href="{{ '/contact/' | url }}" class="btn btn-primary btn-lg">Get Your Free Analysis →</a>
   </div>
 </section>
 {% endblock %}

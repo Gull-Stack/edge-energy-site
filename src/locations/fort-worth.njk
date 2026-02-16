@@ -7,7 +7,7 @@ description: "EDGE delivers complete home energy solutions to Fort Worth homeown
 {% block content %}
 <section class="page-header">
   <div class="container">
-    <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/locations/">Locations</a> <span>/</span> Fort Worth</nav>
+    <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <a href="{{ '/locations/' | url }}">Locations</a> <span>/</span> Fort Worth</nav>
     <h1>Fort Worth Home Energy Solutions</h1>
     <p>Reliable power for Cowtown — from the Stockyards to Southlake, Weatherford to Arlington.</p>
   </div>
@@ -22,10 +22,10 @@ description: "EDGE delivers complete home energy solutions to Fort Worth homeown
         <p>Fort Worth homeowners share the same ERCOT grid problems as the rest of Texas. Winter freezes, summer brownouts, and unpredictable rates from Oncor make energy a constant concern.</p>
         <p>EDGE gives Tarrant County families true energy independence. Maximum solar production for North Texas sunshine. 80kWh of battery backup for extended outages. Fixed rates that don't change for 30 years.</p>
         <p>While your neighbors worry about the next rate hike, you'll have predictable energy costs and bulletproof backup power.</p>
-        <a href="/contact/" class="btn btn-primary">Get Your Fort Worth Energy Analysis</a>
+        <a href="{{ '/contact/' | url }}" class="btn btn-primary">Get Your Fort Worth Energy Analysis</a>
       </div>
       <div class="benefits-image fade-up">
-        <img src="/images/hero-home.jpg" alt="Fort Worth home with EDGE solar system">
+        <img src="{{ '/images/hero-home.jpg' | url }}" alt="Fort Worth home with EDGE solar system">
       </div>
     </div>
   </div>
@@ -49,7 +49,7 @@ description: "EDGE delivers complete home energy solutions to Fort Worth homeown
       <div class="location-card fade-up" style="padding: 20px;"><h4 style="margin-bottom: 0;">Bedford</h4></div>
     </div>
     
-    <p style="text-align: center; margin-top: 32px; color: var(--slate-600);">Don't see your area? <a href="/contact/">Contact us</a> — we likely serve your neighborhood.</p>
+    <p style="text-align: center; margin-top: 32px; color: var(--slate-600);">Don't see your area? <a href="{{ '/contact/' | url }}">Contact us</a> — we likely serve your neighborhood.</p>
   </div>
 </section>
 
@@ -57,7 +57,7 @@ description: "EDGE delivers complete home energy solutions to Fort Worth homeown
   <div class="container fade-up">
     <h2>Ready for Fort Worth Energy Independence?</h2>
     <p>Join thousands of Fort Worth homeowners who've taken control of their power.</p>
-    <a href="/contact/" class="btn btn-primary btn-lg">Get Your Free Analysis →</a>
+    <a href="{{ '/contact/' | url }}" class="btn btn-primary btn-lg">Get Your Free Analysis →</a>
   </div>
 </section>
 {% endblock %}

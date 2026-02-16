@@ -7,7 +7,7 @@ description: "EDGE delivers complete home energy solutions to Houston homeowners
 {% block content %}
 <section class="page-header">
   <div class="container">
-    <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/locations/">Locations</a> <span>/</span> Houston</nav>
+    <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <a href="{{ '/locations/' | url }}">Locations</a> <span>/</span> Houston</nav>
     <h1>Houston Home Energy Solutions</h1>
     <p>Reliable power for Greater Houston — from the Heights to Katy, Sugar Land to The Woodlands.</p>
   </div>
@@ -22,10 +22,10 @@ description: "EDGE delivers complete home energy solutions to Houston homeowners
         <p>Houston homeowners know the frustration of unreliable power. From Hurricane Beryl's devastating outages to ERCOT's summer strain, the grid can't keep up with the nation's fourth-largest city.</p>
         <p>EDGE gives Houston families the power to break free. Maximum solar coverage for our abundant sunshine. 80kWh of battery storage for multi-day outages. Whole-home backup that kicks in instantly when the grid fails.</p>
         <p>No more spoiled food. No more sweltering without AC. No more uncertainty. Just reliable, affordable energy — rain or shine.</p>
-        <a href="/contact/" class="btn btn-primary">Get Your Houston Energy Analysis</a>
+        <a href="{{ '/contact/' | url }}" class="btn btn-primary">Get Your Houston Energy Analysis</a>
       </div>
       <div class="benefits-image fade-up">
-        <img src="/images/hero-home.jpg" alt="Houston home with EDGE solar system">
+        <img src="{{ '/images/hero-home.jpg' | url }}" alt="Houston home with EDGE solar system">
       </div>
     </div>
   </div>
@@ -99,7 +99,7 @@ description: "EDGE delivers complete home energy solutions to Houston homeowners
       </div>
     </div>
     
-    <p style="text-align: center; margin-top: 32px; color: var(--slate-600);">Don't see your area? <a href="/contact/">Contact us</a> — we likely serve your neighborhood.</p>
+    <p style="text-align: center; margin-top: 32px; color: var(--slate-600);">Don't see your area? <a href="{{ '/contact/' | url }}">Contact us</a> — we likely serve your neighborhood.</p>
   </div>
 </section>
 
@@ -107,7 +107,7 @@ description: "EDGE delivers complete home energy solutions to Houston homeowners
   <div class="container fade-up">
     <h2>Ready for Houston Energy Independence?</h2>
     <p>Join thousands of Houston homeowners who've taken control of their power.</p>
-    <a href="/contact/" class="btn btn-primary btn-lg">Get Your Free Analysis →</a>
+    <a href="{{ '/contact/' | url }}" class="btn btn-primary btn-lg">Get Your Free Analysis →</a>
   </div>
 </section>
 {% endblock %}

@@ -7,7 +7,7 @@ description: "EDGE delivers complete home energy solutions to Austin homeowners.
 {% block content %}
 <section class="page-header">
   <div class="container">
-    <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/locations/">Locations</a> <span>/</span> Austin</nav>
+    <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <a href="{{ '/locations/' | url }}">Locations</a> <span>/</span> Austin</nav>
     <h1>Austin Home Energy Solutions</h1>
     <p>Reliable power for Greater Austin — from Round Rock to Dripping Springs, Cedar Park to Kyle.</p>
   </div>
@@ -22,10 +22,10 @@ description: "EDGE delivers complete home energy solutions to Austin homeowners.
         <p>Austin's explosive growth has pushed the grid to its limits. Winter Storm Uri left hundreds of thousands without power. Summer peaks trigger conservation warnings almost weekly.</p>
         <p>EDGE gives Austin families a better way. Maximum solar production for Central Texas sunshine. 80kWh of battery storage that keeps everything running during outages. True energy independence for the Live Music Capital.</p>
         <p>Lock in $0.12/kWh for 30 years while Austin Energy rates continue to climb.</p>
-        <a href="/contact/" class="btn btn-primary">Get Your Austin Energy Analysis</a>
+        <a href="{{ '/contact/' | url }}" class="btn btn-primary">Get Your Austin Energy Analysis</a>
       </div>
       <div class="benefits-image fade-up">
-        <img src="/images/hero-home.jpg" alt="Austin home with EDGE solar system">
+        <img src="{{ '/images/hero-home.jpg' | url }}" alt="Austin home with EDGE solar system">
       </div>
     </div>
   </div>
@@ -82,7 +82,7 @@ description: "EDGE delivers complete home energy solutions to Austin homeowners.
       <div class="location-card fade-up" style="padding: 20px;"><h4 style="margin-bottom: 0;">Lakeway</h4></div>
     </div>
     
-    <p style="text-align: center; margin-top: 32px; color: var(--slate-600);">Don't see your area? <a href="/contact/">Contact us</a> — we likely serve your neighborhood.</p>
+    <p style="text-align: center; margin-top: 32px; color: var(--slate-600);">Don't see your area? <a href="{{ '/contact/' | url }}">Contact us</a> — we likely serve your neighborhood.</p>
   </div>
 </section>
 
@@ -90,7 +90,7 @@ description: "EDGE delivers complete home energy solutions to Austin homeowners.
   <div class="container fade-up">
     <h2>Ready for Austin Energy Independence?</h2>
     <p>Join thousands of Austin homeowners who've taken control of their power.</p>
-    <a href="/contact/" class="btn btn-primary btn-lg">Get Your Free Analysis →</a>
+    <a href="{{ '/contact/' | url }}" class="btn btn-primary btn-lg">Get Your Free Analysis →</a>
   </div>
 </section>
 {% endblock %}

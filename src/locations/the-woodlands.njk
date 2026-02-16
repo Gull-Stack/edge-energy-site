@@ -7,7 +7,7 @@ description: "EDGE delivers complete home energy solutions to The Woodlands home
 {% block content %}
 <section class="page-header">
   <div class="container">
-    <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/locations/">Locations</a> <span>/</span> The Woodlands</nav>
+    <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <a href="{{ '/locations/' | url }}">Locations</a> <span>/</span> The Woodlands</nav>
     <h1>The Woodlands Home Energy Solutions</h1>
     <p>Reliable power for The Woodlands — from The Waterway to Alden Bridge, Panther Creek to Creekside Park.</p>
   </div>
@@ -22,10 +22,10 @@ description: "EDGE delivers complete home energy solutions to The Woodlands home
         <p>The Woodlands' beautiful tree coverage is great for shade but challenging for solar — that's why we design custom systems that maximize production on your available roof space.</p>
         <p>With hurricane season, summer storms, and ERCOT instability, The Woodlands homeowners need reliable backup power. EDGE delivers 80kWh of battery storage that keeps your whole home running through multi-day outages.</p>
         <p>Lock in $0.12/kWh for 30 years while energy costs keep rising for everyone else.</p>
-        <a href="/contact/" class="btn btn-primary">Get Your Woodlands Energy Analysis</a>
+        <a href="{{ '/contact/' | url }}" class="btn btn-primary">Get Your Woodlands Energy Analysis</a>
       </div>
       <div class="benefits-image fade-up">
-        <img src="/images/hero-home.jpg" alt="The Woodlands home with EDGE solar system">
+        <img src="{{ '/images/hero-home.jpg' | url }}" alt="The Woodlands home with EDGE solar system">
       </div>
     </div>
   </div>
@@ -49,7 +49,7 @@ description: "EDGE delivers complete home energy solutions to The Woodlands home
       <div class="location-card fade-up" style="padding: 20px;"><h4 style="margin-bottom: 0;">Willis</h4></div>
     </div>
     
-    <p style="text-align: center; margin-top: 32px; color: var(--slate-600);">Don't see your area? <a href="/contact/">Contact us</a> — we likely serve your neighborhood.</p>
+    <p style="text-align: center; margin-top: 32px; color: var(--slate-600);">Don't see your area? <a href="{{ '/contact/' | url }}">Contact us</a> — we likely serve your neighborhood.</p>
   </div>
 </section>
 
@@ -57,7 +57,7 @@ description: "EDGE delivers complete home energy solutions to The Woodlands home
   <div class="container fade-up">
     <h2>Ready for Woodlands Energy Independence?</h2>
     <p>Join thousands of Woodlands homeowners who've taken control of their power.</p>
-    <a href="/contact/" class="btn btn-primary btn-lg">Get Your Free Analysis →</a>
+    <a href="{{ '/contact/' | url }}" class="btn btn-primary btn-lg">Get Your Free Analysis →</a>
   </div>
 </section>
 {% endblock %}

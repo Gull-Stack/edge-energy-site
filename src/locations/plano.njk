@@ -7,7 +7,7 @@ description: "EDGE delivers complete home energy solutions to Plano homeowners. 
 {% block content %}
 <section class="page-header">
   <div class="container">
-    <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/locations/">Locations</a> <span>/</span> Plano</nav>
+    <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <a href="{{ '/locations/' | url }}">Locations</a> <span>/</span> Plano</nav>
     <h1>Plano Home Energy Solutions</h1>
     <p>Reliable power for Plano — from Legacy West to Willow Bend, Preston Hollow to The Colony.</p>
   </div>
@@ -22,10 +22,10 @@ description: "EDGE delivers complete home energy solutions to Plano homeowners. 
         <p>Plano homeowners have some of the highest energy bills in Texas — large homes, hot summers, and variable electricity rates add up fast.</p>
         <p>EDGE gives Collin County families a better way. Lock in $0.12/kWh for 30 years while your neighbors chase rate plans every year. Get 80kWh of battery backup that keeps your whole house running during outages.</p>
         <p>For Plano's executive homes, EDGE isn't just savings — it's insurance against both rising rates and grid failures.</p>
-        <a href="/contact/" class="btn btn-primary">Get Your Plano Energy Analysis</a>
+        <a href="{{ '/contact/' | url }}" class="btn btn-primary">Get Your Plano Energy Analysis</a>
       </div>
       <div class="benefits-image fade-up">
-        <img src="/images/hero-home.jpg" alt="Plano home with EDGE solar system">
+        <img src="{{ '/images/hero-home.jpg' | url }}" alt="Plano home with EDGE solar system">
       </div>
     </div>
   </div>
@@ -49,7 +49,7 @@ description: "EDGE delivers complete home energy solutions to Plano homeowners. 
       <div class="location-card fade-up" style="padding: 20px;"><h4 style="margin-bottom: 0;">Wylie</h4></div>
     </div>
     
-    <p style="text-align: center; margin-top: 32px; color: var(--slate-600);">Don't see your area? <a href="/contact/">Contact us</a> — we likely serve your neighborhood.</p>
+    <p style="text-align: center; margin-top: 32px; color: var(--slate-600);">Don't see your area? <a href="{{ '/contact/' | url }}">Contact us</a> — we likely serve your neighborhood.</p>
   </div>
 </section>
 
@@ -57,7 +57,7 @@ description: "EDGE delivers complete home energy solutions to Plano homeowners. 
   <div class="container fade-up">
     <h2>Ready for Plano Energy Independence?</h2>
     <p>Join thousands of Plano homeowners who've taken control of their power.</p>
-    <a href="/contact/" class="btn btn-primary btn-lg">Get Your Free Analysis →</a>
+    <a href="{{ '/contact/' | url }}" class="btn btn-primary btn-lg">Get Your Free Analysis →</a>
   </div>
 </section>
 {% endblock %}

@@ -1,8 +1,8 @@
 <header class="header">
   <div class="container">
     <nav class="nav">
-      <a href="/" class="logo">
-        <img src="/images/logo.svg" alt="EDGE - Energy Development Group Exchange">
+      <a href="{{ '/' | url }}" class="logo">
+        <img src="{{ '/images/logo.svg' | url }}" alt="EDGE - Energy Development Group Exchange">
       </a>
       
       <button class="mobile-toggle" aria-label="Toggle menu">
@@ -12,12 +12,12 @@
       </button>
       
       <div class="nav-links">
-        <a href="/how-it-works/">How It Works</a>
-        <a href="/solutions/">Solutions</a>
-        <a href="/locations/">Service Areas</a>
-        <a href="/about/">About</a>
-        <a href="/faq/">FAQ</a>
-        <a href="/contact/" class="btn btn-primary">Get Started</a>
+        <a href="{{ '/how-it-works/' | url }}">How It Works</a>
+        <a href="{{ '/solutions/' | url }}">Solutions</a>
+        <a href="{{ '/locations/' | url }}">Service Areas</a>
+        <a href="{{ '/about/' | url }}">About</a>
+        <a href="{{ '/faq/' | url }}">FAQ</a>
+        <a href="{{ '/contact/' | url }}" class="btn btn-primary">Get Started</a>
       </div>
     </nav>
   </div>
