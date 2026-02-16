@@ -15,16 +15,17 @@
   --black: #000000;
   --white: #ffffff;
   
-  --slate-50: #f8fafc;
-  --slate-100: #f1f5f9;
-  --slate-200: #e2e8f0;
-  --slate-300: #cbd5e1;
-  --slate-400: #94a3b8;
-  --slate-500: #64748b;
-  --slate-600: #475569;
-  --slate-700: #334155;
-  --slate-800: #1e293b;
-  --slate-900: #0f172a;
+  /* Neutral grays (no blue tint) */
+  --slate-50: #fafafa;
+  --slate-100: #f5f5f5;
+  --slate-200: #e5e5e5;
+  --slate-300: #d4d4d4;
+  --slate-400: #a3a3a3;
+  --slate-500: #737373;
+  --slate-600: #525252;
+  --slate-700: #404040;
+  --slate-800: #262626;
+  --slate-900: #171717;
   
   --primary: var(--green-400);
   --primary-dark: var(--green-500);
