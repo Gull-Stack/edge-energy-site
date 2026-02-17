@@ -49,7 +49,11 @@ description: "Contact EDGE for a free home energy analysis. See how much you can
       </div>
       
       <div class="fade-up">
-        <form action="/api/contact" method="POST" style="background: var(--slate-50); padding: 32px; border-radius: var(--radius-lg);">
+        <form id="contactForm" style="background: var(--slate-50); padding: 32px; border-radius: var(--radius-lg);">
+          <!-- Honeypot - bots fill this, humans don't see it -->
+          <input type="text" name="fax_number" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;opacity:0;height:0;width:0">
+          <!-- Timestamp token - bots submit too fast -->
+          <input type="hidden" name="_timestamp" id="_timestamp" value="">
           <div class="form-group">
             <label for="name">Full Name *</label>
             <input type="text" id="name" name="name" required>
@@ -87,10 +91,59 @@ description: "Contact EDGE for a free home energy analysis. See how much you can
             <textarea id="message" name="message" placeholder="Tell us about your energy goals..."></textarea>
           </div>
           
-          <button type="submit" class="btn btn-primary" style="width: 100%;">Get My Free Analysis</button>
-          
+          <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%;">Get My Free Analysis</button>
+          <div id="formMessage" style="display:none;padding:16px;border-radius:8px;text-align:center;font-weight:500;margin-top:16px"></div>
           <p style="font-size: 0.875rem; color: var(--slate-500); margin-top: 16px; text-align: center;">No credit check required. Your information is secure.</p>
         </form>
+        <script>
+          document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const msg = document.getElementById('formMessage');
+            const form = this;
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+            msg.style.display = 'none';
+            const data = {
+              name: form.name.value,
+              email: form.email.value,
+              phone: form.phone.value,
+              address: form.address.value,
+              bill: form.bill.value,
+              message: form.message.value,
+              fax_number: form.fax_number.value,
+              _timestamp: form._timestamp.value
+            };
+            try {
+              const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+              });
+              const result = await res.json();
+              if (res.ok) {
+                msg.style.background = 'rgba(74,222,128,0.15)';
+                msg.style.color = '#166534';
+                msg.textContent = result.message || 'Thanks! We\'ll be in touch within 24 hours.';
+                form.reset();
+              } else {
+                msg.style.background = 'rgba(239,68,68,0.15)';
+                msg.style.color = '#991b1b';
+                msg.textContent = result.error || 'Something went wrong. Please try again.';
+              }
+              msg.style.display = 'block';
+            } catch (err) {
+              msg.style.background = 'rgba(239,68,68,0.15)';
+              msg.style.color = '#991b1b';
+              msg.textContent = 'Network error. Please call us instead.';
+              msg.style.display = 'block';
+            }
+            btn.disabled = false;
+            btn.textContent = 'Get My Free Analysis';
+          });
+          // Set timestamp on page load (bots that submit too fast get blocked)
+          document.getElementById('_timestamp').value = Date.now();
+        </script>
       </div>
     </div>
   </div>
