@@ -29,7 +29,7 @@ function looksLikeSpam(data) {
 }
 // === END SPAM PROTECTION ===
 
-async function sendEmail({ to, from, fromName, subject, html, replyTo }) {
+async function sendEmail({ to, from, fromName, subject, html, replyTo, cc }) {
   const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
     method: 'POST',
     headers: {
@@ -37,7 +37,7 @@ async function sendEmail({ to, from, fromName, subject, html, replyTo }) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      personalizations: [{ to: [{ email: to }] }],
+      personalizations: [{ to: [{ email: to }], ...(cc ? { cc: [{ email: cc }] } : {}) }],
       from: { email: from, name: fromName || 'EDGE Energy' },
       reply_to: replyTo ? { email: replyTo } : undefined,
       subject,
@@ -47,7 +47,7 @@ async function sendEmail({ to, from, fromName, subject, html, replyTo }) {
   return response.ok;
 }
 
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -132,6 +132,7 @@ export default async function handler(req, res) {
         subject: `⚡ New Lead: ${name} - ${bill || 'Energy Analysis'}`,
         html: notificationHtml,
         replyTo: email,
+        cc: 'bryce@gullstack.com',
       });
     }
 
