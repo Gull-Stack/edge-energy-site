@@ -6,6 +6,8 @@ Eleventy static site. Client: Energy Development Group. Product brand: **MicroGR
 (was sourced from edgeenergy.com).
 
 - Build: `npm run build` → `_site/`. Serve: `npx @11ty/eleventy --serve` (preview port 8088).
+- **Deploy (queue-bypass):** `vercel build --prod --scope gull-stack` then `vercel deploy --prebuilt --prod --scope gull-stack` (CLI must be logged in as brycedmorgan@gmail.com). The git-integration build queue has been flaky/stuck; this local-build path is reliable. Verify on the custom domain (www.energydevelopmentgroup.com) — apex 307s to www, and `.vercel.app` URLs are SSO-protected.
+- **LIVE state (2026-06-08):** all 12 feedback items + logo-driven visual polish deployed to production.
 - Brand/site data: `src/_data/site.json` (drives canonical, og:url, title, name).
 - Lead form posts to `/api/contact` (serverless). GA4: `G-KP2EQET83V` (inherited from EDGE — verify/replace).
 
