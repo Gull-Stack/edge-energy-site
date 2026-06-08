@@ -829,3 +829,152 @@ a:hover { color: var(--primary-dark); }
 
 .breadcrumb a { color: var(--primary); }
 .breadcrumb span { margin: 0 8px; }
+
+/* ============================================================
+   BRAND POLISH — logo-driven (faceted "M", ink + green square)
+   ============================================================ */
+:root {
+  --ink: #0c0d0c;            /* true near-black, matches logo */
+  --ink-2: #141614;
+  --square: #5aa23c;         /* logo's green accent square */
+  --square-soft: rgba(90,162,60,0.14);
+}
+
+/* Sharper, more architectural buttons */
+.btn { border-radius: 8px; letter-spacing: 0.005em; }
+.btn-primary {
+  background: linear-gradient(135deg, var(--green-400) 0%, var(--green-600) 100%);
+  box-shadow: 0 6px 18px rgba(50,168,82,0.28);
+}
+.btn-primary:hover { box-shadow: 0 10px 24px rgba(50,168,82,0.38); }
+
+/* Section labels carry the logo's green square */
+.section-label {
+  position: relative;
+  padding-left: 22px;
+  letter-spacing: 0.16em;
+}
+.section-label::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 11px; height: 11px;
+  background: var(--square);
+  border-radius: 2px;
+}
+.section-dark .section-label::before { background: var(--green-400); }
+
+/* Deepen every dark surface to logo black + faceted texture */
+.stats, .section-dark {
+  background: var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+.stats::before, .section-dark::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(135deg, rgba(255,255,255,0.035) 25%, transparent 25%),
+    linear-gradient(225deg, rgba(255,255,255,0.035) 25%, transparent 25%);
+  background-size: 76px 76px;
+  pointer-events: none;
+  z-index: 0;
+}
+.stats .container, .section-dark .container { position: relative; z-index: 1; }
+
+/* Stat tiles: thin green square topper + tighter labels */
+.stats-grid .stat-item { position: relative; padding-top: 18px; }
+.stats-grid .stat-item::before {
+  content: '';
+  position: absolute; top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 14px; height: 14px;
+  background: var(--square);
+  border-radius: 3px;
+}
+.stat-item p { letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.8rem; }
+
+/* Hero: faceted backdrop + offset green-square framing on the image */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(135deg, rgba(12,13,12,0.04) 25%, transparent 25%),
+    linear-gradient(225deg, rgba(12,13,12,0.04) 25%, transparent 25%);
+  background-size: 64px 64px;
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+}
+.hero-image { z-index: 1; }
+.hero-image::before {
+  content: '';
+  position: absolute;
+  width: 46%; height: 70%;
+  right: -22px; top: -22px;
+  border: 3px solid var(--square);
+  border-radius: var(--radius-lg);
+  z-index: -1;
+}
+.hero-image::after {
+  content: '';
+  position: absolute;
+  width: 96px; height: 96px;
+  left: -26px; bottom: -26px;
+  background: var(--square);
+  border-radius: 6px;
+  z-index: -1;
+}
+@media (max-width: 900px) {
+  .hero-image::before, .hero-image::after { display: none; }
+}
+
+/* Hero badge: clean white chip instead of green pill */
+.hero-badge {
+  background: white;
+  color: var(--slate-800);
+  border: 1px solid var(--slate-200);
+  box-shadow: var(--shadow);
+}
+.hero-badge svg { color: var(--square); }
+
+/* Feature cards: faint border + green square that draws across on hover */
+.feature-card {
+  border: 1px solid var(--slate-100);
+  position: relative;
+  overflow: hidden;
+}
+.feature-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  height: 3px; width: 0;
+  background: var(--square);
+  transition: width 0.35s ease;
+}
+.feature-card:hover::before { width: 100%; }
+
+/* Sharper, squarer feature icons (echo the logo mark) */
+.feature-icon { border-radius: 6px; }
+
+/* CTA: ink background with the same facet texture instead of flat green */
+.cta {
+  background: var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+.cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(135deg, rgba(90,162,60,0.10) 25%, transparent 25%),
+    linear-gradient(225deg, rgba(90,162,60,0.10) 25%, transparent 25%);
+  background-size: 76px 76px;
+  z-index: 0;
+}
+.cta .container { position: relative; z-index: 1; }
+.cta .btn-primary { background: linear-gradient(135deg, var(--green-400), var(--green-600)); color: #fff; }
+
+/* Footer to match logo black */
+.footer { background: var(--ink); }
