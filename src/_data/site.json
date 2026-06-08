@@ -1,11 +1,11 @@
 {
-  "name": "EDGE",
-  "fullName": "Energy Development Group Exchange",
+  "name": "MicroGRID",
+  "fullName": "MicroGRID — Powered by EDGE",
   "tagline": "Texas Energy Independence Starts Here",
-  "description": "EDGE provides complete home energy solutions with solar, battery storage, and whole-home backup power for Texas homeowners. Fixed rates, no upfront costs, total grid independence.",
-  "url": "https://edgeenergy.com",
+  "description": "MicroGRID provides complete home energy solutions with solar, battery storage, and backup power for Texas homeowners. Fixed rates, no upfront costs, total grid independence.",
+  "url": "https://gomicrogridenergy.com",
   "phone": "(512) 555-EDGE",
-  "email": "info@edgeenergy.com",
+  "email": "info@gomicrogridenergy.com",
   "address": {
     "street": "",
     "city": "Houston",
