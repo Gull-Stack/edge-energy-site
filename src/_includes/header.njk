@@ -1,9 +1,12 @@
 <header class="header">
   <div class="container">
     <nav class="nav">
-      <a href="{{ '/' | url }}" class="logo" style="display:inline-flex; flex-direction:column; align-items:center; gap:3px; text-decoration:none; line-height:1;">
-        <img src="{{ '/images/microgrid-logo-dark.png' | url }}" alt="MicroGRID — Powered by EDGE">
-        <span style="font-size:0.5rem; letter-spacing:0.22em; font-weight:600; text-transform:uppercase; color:var(--slate-500);">Powered by EDGE</span>
+      <a href="{{ '/' | url }}" class="logo" style="display:inline-flex; flex-direction:column; align-items:center; gap:6px; text-decoration:none; line-height:1;">
+        <img src="{{ '/images/microgrid-logo-dark.png' | url }}" alt="MicroGRID — powered by EDGE">
+        <span style="display:inline-flex; align-items:center; gap:6px;">
+          <span style="font-size:0.66rem; color:var(--slate-500); font-weight:500;">powered by</span>
+          <img src="{{ '/images/edge-logo.png' | url }}" alt="EDGE" style="height:14px; width:auto;">
+        </span>
       </a>
       
       <button class="mobile-toggle" aria-label="Toggle menu">

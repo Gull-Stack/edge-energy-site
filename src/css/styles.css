@@ -844,9 +844,9 @@ a:hover { color: var(--primary-dark); }
   --primary-light: #6cbf4e;
 }
 
-/* Bigger logo (header + footer) */
-.logo img { height: 52px; }
-.footer-logo { height: 48px; }
+/* Bigger logo (header + footer); scope to main mark so the EDGE sub-logo keeps its size */
+.logo > img { height: 48px; }
+.footer-logo { height: 46px; margin-bottom: 8px; }
 
 /* Sharper, more architectural buttons — brand green gradient */
 .btn { border-radius: 8px; letter-spacing: 0.005em; }
