@@ -836,17 +836,25 @@ a:hover { color: var(--primary-dark); }
 :root {
   --ink: #0c0d0c;            /* true near-black, matches logo */
   --ink-2: #141614;
-  --square: #5aa23c;         /* logo's green accent square */
-  --square-soft: rgba(90,162,60,0.14);
+  --square: #589840;         /* EXACT logo green (sampled from mark) */
+  --square-soft: rgba(88,152,64,0.14);
+  /* Unify every green on the site to the logo green (font == cubes) */
+  --primary: #589840;
+  --primary-dark: #3f7330;
+  --primary-light: #6cbf4e;
 }
 
-/* Sharper, more architectural buttons */
+/* Bigger logo (header + footer) */
+.logo img { height: 52px; }
+.footer-logo { height: 48px; }
+
+/* Sharper, more architectural buttons — brand green gradient */
 .btn { border-radius: 8px; letter-spacing: 0.005em; }
 .btn-primary {
-  background: linear-gradient(135deg, var(--green-400) 0%, var(--green-600) 100%);
-  box-shadow: 0 6px 18px rgba(50,168,82,0.28);
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+  box-shadow: 0 6px 18px rgba(88,152,64,0.30);
 }
-.btn-primary:hover { box-shadow: 0 10px 24px rgba(50,168,82,0.38); }
+.btn-primary:hover { box-shadow: 0 10px 24px rgba(88,152,64,0.42); }
 
 /* Section labels carry the logo's green square */
 .section-label {
@@ -863,7 +871,7 @@ a:hover { color: var(--primary-dark); }
   background: var(--square);
   border-radius: 2px;
 }
-.section-dark .section-label::before { background: var(--green-400); }
+.section-dark .section-label::before { background: var(--square); }
 
 /* Deepen every dark surface to logo black + faceted texture */
 .stats, .section-dark {
@@ -956,7 +964,7 @@ a:hover { color: var(--primary-dark); }
 .feature-card:hover::before { width: 100%; }
 
 /* Sharper, squarer feature icons (echo the logo mark) */
-.feature-icon { border-radius: 6px; }
+.feature-icon { border-radius: 6px; background: var(--square-soft); }
 
 /* CTA: ink background with the same facet texture instead of flat green */
 .cta {
@@ -974,7 +982,7 @@ a:hover { color: var(--primary-dark); }
   z-index: 0;
 }
 .cta .container { position: relative; z-index: 1; }
-.cta .btn-primary { background: linear-gradient(135deg, var(--green-400), var(--green-600)); color: #fff; }
+.cta .btn-primary { background: linear-gradient(135deg, var(--primary-light), var(--primary)); color: #fff; }
 
 /* Footer to match logo black */
 .footer { background: var(--ink); }
