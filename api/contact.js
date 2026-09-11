@@ -3,6 +3,12 @@
 
 const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
 const SALES_EMAIL = process.env.SITE_EMAIL || 'info@energydevelopmentgroup.com';
+
+// Shared across every client lead endpoint. Canonical copy lives in
+// Gull-Stack/walkthru-labs → shared/lead-spam-filter.js; this is a synced copy,
+// so fix it there and re-run shared/sync-lead-spam-filter.sh, not here.
+// This endpoint is CommonJS, hence require rather than import.
+const { classifyLead } = require('./lead-spam-filter.js');
 const FROM_EMAIL = process.env.FROM_EMAIL || 'leads@gullstack.com';
 
 // === SPAM PROTECTION ===
@@ -66,6 +72,18 @@ module.exports = async (req, res) => {
     }
     // === END SPAM CHECK ===
 
+    // The check above catches bots. It does not catch a salesperson filling the
+    // form properly to pitch EDGE. A flagged submission is never dropped — the
+    // alert is routed to us instead of the client.
+    const triage = classifyLead({
+      name, email, phone, message,
+      extraText: [address, bill].filter(Boolean).join(' '),
+    });
+    const isClean = triage.verdict === 'clean';
+    if (!isClean) {
+      console.log(`[LEAD TRIAGE] verdict=${triage.verdict} reasons=${triage.reasons.join('|')} name="${name}" — routed to Bryce, NOT the client`);
+    }
+
     if (!name || !email || !phone) {
       return res.status(400).json({ error: 'Name, email, and phone are required' });
     }
@@ -96,7 +114,9 @@ module.exports = async (req, res) => {
         </div>
       `;
 
-      await sendEmail({
+      // Skipped on a flagged submission: thanking a cold pitch confirms the
+      // mailbox is live and gets the address resold.
+      if (isClean) await sendEmail({
         to: email,
         from: FROM_EMAIL,
         subject: 'Your Free Energy Analysis Request',
@@ -125,14 +145,23 @@ module.exports = async (req, res) => {
         </div>
       `;
 
+      const tag = isClean ? '⚡ New Lead'
+        : triage.verdict === 'test' ? '[OUR TEST — not a lead]'
+        : '[NOT A LEAD — selling to EDGE]';
       await sendEmail({
-        to: SALES_EMAIL,
+        to: isClean ? SALES_EMAIL : 'bryce@gullstack.com',
         from: FROM_EMAIL,
         fromName: `${name} via EDGE Energy`,
-        subject: `⚡ New Lead: ${name} - ${bill || 'Energy Analysis'}`,
-        html: notificationHtml,
+        subject: `${tag}: ${name} - ${bill || 'Energy Analysis'}`,
+        html: isClean ? notificationHtml
+          : `<p style="font:14px Arial;background:#eef4ff;border-left:3px solid #2a4a7f;padding:12px 14px;margin:0 0 18px">
+               <b>Held back from the client.</b> Classified <b>${triage.verdict}</b> —
+               ${triage.reasons.join(', ')}.<br>
+               If this is a real customer the filter is wrong: fix
+               <code>shared/lead-spam-filter.js</code> in walkthru-labs and re-sync.
+             </p>${notificationHtml}`,
         replyTo: email,
-        cc: 'bryce@gullstack.com',
+        cc: isClean ? 'bryce@gullstack.com' : undefined,
       });
     }
 
