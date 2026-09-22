@@ -845,8 +845,9 @@ a:hover { color: var(--primary-dark); }
 }
 
 /* Bigger logo (header + footer); scope to main mark so the EDGE sub-logo keeps its size */
-.logo > img { height: 48px; }
-.footer-logo { height: 46px; margin-bottom: 8px; }
+.logo > img { height: 64px; }
+/* Footer brand mark stacks above the "powered by EDGE" lockup (block, not inline) */
+.footer-logo { height: 46px; margin-bottom: 10px; display: block; }
 
 /* Sharper, more architectural buttons — brand green gradient */
 .btn { border-radius: 8px; letter-spacing: 0.005em; }

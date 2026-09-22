@@ -91,7 +91,7 @@ description: "Contact MicroGRID for a free home energy analysis. See how much yo
             <textarea id="message" name="message" placeholder="Tell us about your energy goals..."></textarea>
           </div>
           
-          <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%;">Get My Free Analysis</button>
+          <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%;">Get My Free Design</button>
           <div id="formMessage" style="display:none;padding:16px;border-radius:8px;text-align:center;font-weight:500;margin-top:16px"></div>
           <p style="font-size: 0.875rem; color: var(--slate-500); margin-top: 16px; text-align: center;">No credit check required. Your information is secure.</p>
         </form>
@@ -139,7 +139,7 @@ description: "Contact MicroGRID for a free home energy analysis. See how much yo
               msg.style.display = 'block';
             }
             btn.disabled = false;
-            btn.textContent = 'Get My Free Analysis';
+            btn.textContent = 'Get My Free Design';
           });
           // Set timestamp on page load (bots that submit too fast get blocked)
           document.getElementById('_timestamp').value = Date.now();

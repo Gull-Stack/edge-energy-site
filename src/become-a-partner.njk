@@ -1,0 +1,333 @@
+---
+title: "Become a Partner | MicroGRID — Powered by EDGE"
+description: "Partner with MicroGRID. Apply to join our network of Sales Partners and Installation Partners serving homeowners across Texas."
+---
+{% extends "base.njk" %}
+
+{% block content %}
+<section class="page-header">
+  <div class="container">
+    <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> Become a Partner</nav>
+    <h1>Become a Partner</h1>
+    <p>Join the MicroGRID network. Whether you sell or install, we want to grow with the best partners in Texas. Tell us about your business and our partnership team will be in touch.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div style="max-width: 760px; margin: 0 auto;">
+      <form id="partnerForm" class="fade-up" style="background: var(--slate-50); padding: 32px; border-radius: var(--radius-lg);">
+        <!-- Honeypot - bots fill this, humans don't see it -->
+        <input type="text" name="fax_number" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;opacity:0;height:0;width:0">
+        <!-- Timestamp token - bots submit too fast -->
+        <input type="hidden" name="_timestamp" id="_timestamp" value="">
+
+        <div class="form-group">
+          <label for="companyName">Company Name *</label>
+          <input type="text" id="companyName" name="companyName" required>
+        </div>
+
+        <div class="form-group">
+          <label for="contactName">Point of Contact First and Last Name *</label>
+          <input type="text" id="contactName" name="contactName" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Point of Contact Phone Number *</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Point of Contact Email Address *</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="partnershipType">Partnership Type *</label>
+          <select id="partnershipType" name="partnershipType" required>
+            <option value="">Select one...</option>
+            <option value="Sales Partner">Sales Partner</option>
+            <option value="Installation Partner">Installation Partner</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Area(s) of Operation <span style="font-weight:400; color:var(--slate-500);">(select all that apply)</span></label>
+          <div class="areas-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(180px, 1fr)); gap:10px 18px; margin-top:8px;">
+            {% set areas = ["Amarillo","Austin","Corpus Christi","Dallas","El Paso","Fort Worth","Houston","Lubbock","McAllen","Midland/Odessa","San Antonio"] %}
+            {% for area in areas %}
+            <label style="display:flex; align-items:center; gap:9px; font-weight:400; cursor:pointer;">
+              <input type="checkbox" name="areas" value="{{ area }}" style="width:auto; margin:0;">
+              <span>{{ area }}</span>
+            </label>
+            {% endfor %}
+            <label style="display:flex; align-items:center; gap:9px; font-weight:400; cursor:pointer;">
+              <input type="checkbox" id="areaOtherCheck" name="areas" value="Other" style="width:auto; margin:0;">
+              <span>Other</span>
+            </label>
+          </div>
+          <input type="text" id="areaOther" name="areaOther" placeholder="If Other, please specify" style="margin-top:12px;">
+        </div>
+
+        <div class="form-group">
+          <label for="website">Website URL</label>
+          <input type="text" id="website" name="website" placeholder="https://">
+        </div>
+
+        <div class="form-group">
+          <label for="installs">Total # of Solar + Battery Projects Installed Last Quarter</label>
+          <input type="number" id="installs" name="installs" min="0" inputmode="numeric">
+        </div>
+
+        <div class="form-group">
+          <label for="solarOnly">Total # of Solar Only Projects Installed Last Quarter</label>
+          <input type="number" id="solarOnly" name="solarOnly" min="0" inputmode="numeric">
+        </div>
+
+        <div class="form-group">
+          <label for="batteryOnly">Total # of Battery Only Projects Installed Last Quarter</label>
+          <input type="number" id="batteryOnly" name="batteryOnly" min="0" inputmode="numeric">
+        </div>
+
+        <div class="form-group">
+          <label for="kw">Total kW's Installed Last Quarter</label>
+          <input type="number" id="kw" name="kw" min="0" step="any" inputmode="decimal">
+        </div>
+
+        <div class="form-group">
+          <label for="kwhBattery">Total # of kWh of Battery Storage Installed Last Quarter</label>
+          <input type="number" id="kwhBattery" name="kwhBattery" min="0" step="any" inputmode="decimal">
+        </div>
+
+        <div class="form-group">
+          <label for="employees">Current Total Number of W2 Employees</label>
+          <input type="text" id="employees" name="employees">
+        </div>
+
+        <div class="form-group">
+          <label for="employees1099">Current Total Number of 1099</label>
+          <input type="text" id="employees1099" name="employees1099">
+        </div>
+
+        <div class="form-group">
+          <label for="strategy">Sales &amp; Marketing Strategy</label>
+          <textarea id="strategy" name="strategy" rows="5" placeholder="Tell us how you generate and close business..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="otherInfo">Other Information (tell us more about your business)</label>
+          <textarea id="otherInfo" name="otherInfo" rows="5"></textarea>
+        </div>
+
+        {# ===== Installation Partner vetting questionnaire — shown only when "Installation Partner" is selected ===== #}
+        <div id="installSection" style="display:none;">
+          <div style="border-top:2px solid var(--primary); margin:36px 0 10px;"></div>
+          <h2 style="font-size:1.3rem; margin-bottom:4px;">Installation Partner — Vetting Questionnaire</h2>
+          <p style="color:var(--slate-500); margin-bottom:18px; font-size:0.95rem;">A few more questions so our team can review your crew. Answer what applies; supporting documents (licenses, COIs, W-9) are collected later if you're approved.</p>
+
+          {% macro yn(name, label) %}
+          <div class="form-group">
+            <label>{{ label }}</label>
+            <select name="{{ name }}"><option value="">Select...</option><option value="Yes">Yes</option><option value="No">No</option></select>
+          </div>
+          {% endmacro %}
+          {% macro txt(name, label) %}
+          <div class="form-group"><label>{{ label }}</label><input type="text" name="{{ name }}"></div>
+          {% endmacro %}
+          {% macro area(name, label) %}
+          <div class="form-group"><label>{{ label }}</label><textarea name="{{ name }}" rows="3"></textarea></div>
+          {% endmacro %}
+          {% macro checks(name, label, options) %}
+          <div class="form-group"><label>{{ label }}</label>
+            <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:8px 16px; margin-top:6px;">
+              {% for o in options %}<label style="display:flex; align-items:center; gap:8px; font-weight:400; cursor:pointer;"><input type="checkbox" name="{{ name }}" value="{{ o }}" style="width:auto; margin:0;"><span>{{ o }}</span></label>{% endfor %}
+            </div>
+          </div>
+          {% endmacro %}
+
+          <h3 style="margin:26px 0 2px; font-size:1.05rem;">Licensing, Certifications &amp; Legal Standing</h3>
+          {{ yn('ip_entity_registered', 'Is your company a legally registered business entity (Texas or your state of operation)?') }}
+          {{ txt('ip_entity_type_state', 'Entity type (LLC, Corp, etc.) and state of registration') }}
+          {{ txt('ip_legal_entity_name', 'Legal entity name (if different from company name above)') }}
+          {{ txt('ip_states_registration', 'State(s) of registration') }}
+          {{ yn('ip_tx_electrical_license', 'Does your company hold a current Texas Electrical Contractor License?') }}
+          {{ txt('ip_tx_electrical_info', 'License number / expiration date') }}
+          {{ yn('ip_master_electrician', 'Does your company employ at least one Licensed Master Electrician?') }}
+          {{ txt('ip_master_electrician_info', 'Master Electrician name / license number / expiration') }}
+          {{ yn('ip_journeyman_licensed', 'Do all field electricians hold current Journeyman licenses (or apprentice registration under supervision)?') }}
+          {{ txt('ip_journeyman_count', 'Number of licensed Journeyman Electricians on staff') }}
+          {{ yn('ip_additional_licenses', 'Any additional state or municipal licenses relevant to solar (GC, low-voltage, home improvement, etc.)?') }}
+          {{ txt('ip_additional_licenses_info', 'Additional licenses (type / number / jurisdiction)') }}
+          {{ yn('ip_license_revoked', 'Has the company or any owner/principal had a contractor license revoked, suspended, or denied in any state in the last 5 years?') }}
+          {{ txt('ip_license_revoked_details', 'Details (if applicable)') }}
+
+          <h3 style="margin:26px 0 2px; font-size:1.05rem;">Insurance &amp; Safety Record</h3>
+          {{ yn('ip_gl_insurance', 'General Liability of at least $500,000 per occurrence / $1,000,000 aggregate?') }}
+          {{ txt('ip_gl_info', 'General Liability carrier name, Policy Number') }}
+          {{ yn('ip_workers_comp', "Workers' Compensation insurance?") }}
+          {{ txt('ip_workers_comp_info', "Workers' Comp carrier / policy number") }}
+          {{ yn('ip_auto_liability', 'Commercial Auto Liability of at least $250,000 combined single limit?') }}
+          {{ txt('ip_auto_info', 'Auto carrier / policy limits') }}
+          {{ yn('ip_umbrella', 'Excess / Umbrella Liability of at least $500,000?') }}
+          {{ txt('ip_umbrella_info', 'Umbrella carrier / policy limits') }}
+          {{ yn('ip_coi_additional_insured', 'Can you provide a COI naming MicroGRID Energy, LLC as additional insured upon request?') }}
+          {{ area('ip_safety_program', "Describe your company's safety program (OSHA compliance, fall protection, jobsite safety training, etc.)") }}
+          {{ yn('ip_osha_incidents', 'Any OSHA citations, safety incidents, or recordable injuries in the last 3 years?') }}
+          {{ txt('ip_osha_details', 'Details (if applicable)') }}
+          {{ txt('ip_osha_emr', 'Current OSHA EMR (Experience Modification Rate), if available') }}
+
+          <h3 style="margin:26px 0 2px; font-size:1.05rem;">Vehicles &amp; Field Presence</h3>
+          {{ txt('ip_vehicle_count', 'How many company-owned or leased vehicles are used for installation work?') }}
+          {{ checks('ip_vehicle_branding', 'Your vehicles are currently:', ['Plain / unmarked','Simple lettering only','Other','Wrapped in company branding']) }}
+          {{ txt('ip_vehicle_branding_other', 'If Other, please describe') }}
+          {{ yn('ip_willing_magnets', 'Willing to display MicroGRID-provided vehicle magnets on job-site vehicles (provided at no cost)?') }}
+          {{ yn('ip_can_acquire_vehicles', 'If provided additional consistent work, can you acquire additional vehicles within a reasonable timeframe?') }}
+          {{ area('ip_fleet_scale_notes', 'Briefly describe your ability to scale fleet capacity') }}
+
+          <h3 style="margin:26px 0 2px; font-size:1.05rem;">Manpower &amp; Crew Structure</h3>
+          {{ txt('ip_field_personnel', 'Total number of field personnel employed') }}
+          {{ txt('ip_simultaneous_crews', 'How many installation crews can you field simultaneously?') }}
+          {{ area('ip_crew_composition', 'Typical crew composition (crew lead, journeyman electrician, installers, roof lead, battery tech, etc.)') }}
+          {{ txt('ip_avg_crew_size', 'Average crew size') }}
+          {{ txt('ip_installs_per_week', 'Large Residential solar + battery installs per week at full capacity?') }}
+          {{ yn('ip_subcontracted_labor', 'Do you use subcontracted labor for any portion of installation work?') }}
+          {{ area('ip_subcontracted_details', 'If yes, what scope do you sub contract? How do you ensure quality? Do you run background checks?') }}
+          {{ txt('ip_turnover_rate', 'Current annual employee turnover rate (approximate)') }}
+
+          <h3 style="margin:26px 0 2px; font-size:1.05rem;">Service Area &amp; Capacity</h3>
+          {{ area('ip_coverage_no_adder', 'Regions / counties you can cover without travel adders or per diem') }}
+          {{ txt('ip_furthest_distance','Furthest distance (miles or drive time) your crews typically travel for a standard install') }}
+          {{ yn('ip_physical_presence', 'Existing physical presence (office, warehouse, staging) in any of those regions?') }}
+          {{ txt('ip_physical_presence_locations', 'Location(s) and primary use') }}
+
+          <h3 style="margin:26px 0 2px; font-size:1.05rem;">Experience &amp; Technical Capability</h3>
+          {{ txt('ip_years_solar', 'Years performing residential solar installations') }}
+          {{ txt('ip_systems_to_date', 'How many Residential Projects Installed Year to Date?') }}
+          {{ checks('ip_historical_focus', 'Your company has historically focused on:', ['Solar only','Solar + Battery','Solar + Generator','Roofing / general construction + solar','Other']) }}
+          {{ txt('ip_historical_focus_other', 'If Other, please describe') }}
+          {{ txt('ip_pct_battery_12mo', 'Approx. % of installs in the last 12 months that included battery storage') }}
+          {{ checks('ip_inverter_brands', 'Inverter brands your crew has installed:', ['Enphase','SolarEdge','Tesla','Generac / PWRcell','Duracell','Other']) }}
+          {{ txt('ip_inverter_other', 'Other inverter brands') }}
+          {{ checks('ip_battery_systems', 'Battery systems your crew has installed:', ['Tesla Powerwall','Enphase IQ Battery','Generac PWRcell','EcoFlow','Duracell','Franklin','Other']) }}
+          {{ txt('ip_battery_other', 'Other battery systems') }}
+          {{ checks('ip_racking_systems', 'Racking systems your crew has worked with:', ['IronRidge','Unirac','SnapNrack','K2','Other']) }}
+          {{ txt('ip_racking_other', 'Other racking systems') }}
+          {{ yn('ip_ground_mount', 'Has your crew performed ground mount installations?') }}
+          {{ txt('ip_ground_mount_count', 'Approximate number of ground mount installs completed') }}
+          {{ yn('ip_modular_homes', 'Has your crew installed on modular or manufactured homes?') }}
+          {{ yn('ip_generator_integration', 'Has your crew performed installs involving generator integration (Generac or similar)?') }}
+
+          <h3 style="margin:26px 0 2px; font-size:1.05rem;">Certifications &amp; Training</h3>
+          {{ checks('ip_certifications', 'Certifications held by your company or installers:', ['NABCEP PV Installation Professional','NABCEP PV Associate','OSHA 10','OSHA 30','Manufacturer-specific','Other']) }}
+          {{ txt('ip_certifications_list', 'List manufacturer-specific or other certifications, including holder names') }}
+          {{ yn('ip_ongoing_training', 'Do you participate in ongoing training as new equipment, codes, or manufacturer requirements are released?') }}
+          {{ area('ip_training_notes', 'Briefly describe your training process') }}
+
+          <h3 style="margin:26px 0 2px; font-size:1.05rem;">Technology &amp; Process Compatibility</h3>
+          {{ yn('ip_uses_crm', 'Do you use a CRM, project management, or scheduling software for field operations?') }}
+          {{ txt('ip_crm_platforms', 'Platform(s) used') }}
+          {{ yn('ip_comfortable_third_party', 'Is your team comfortable submitting photo documentation and virtual inspections through a third-party platform (e.g. Site Capture)?') }}
+          {{ checks('ip_familiar_platforms', 'Platforms your team is familiar with for documentation / scheduling / file sharing:', ['Google Workspace','Microsoft 365','Neither / Not familiar','Other']) }}
+          {{ txt('ip_platforms_other', 'Other platforms used') }}
+          {{ yn('ip_field_devices', 'Reliable smartphone/tablet access in the field for all crew (GPS enabled) for photo documentation?') }}
+
+          <h3 style="margin:26px 0 2px; font-size:1.05rem;">References</h3>
+          <p style="color:var(--slate-500); font-size:0.9rem; margin-bottom:10px;">Please provide at least two professional references, ideally from prior EPC or solar company relationships.</p>
+          {{ txt('ip_ref1_company', 'Reference 1 — company name') }}
+          {{ txt('ip_ref1_contact', 'Reference 1 — contact name / title') }}
+          {{ txt('ip_ref1_phone', 'Reference 1 — phone / email') }}
+          {{ txt('ip_ref1_relationship', 'Reference 1 — relationship and nature of work performed') }}
+          {{ txt('ip_ref2_company', 'Reference 2 — company name') }}
+          {{ txt('ip_ref2_contact', 'Reference 2 — contact name / title') }}
+          {{ txt('ip_ref2_phone', 'Reference 2 — phone / email') }}
+          {{ txt('ip_ref2_relationship', 'Reference 2 — relationship and nature of work performed') }}
+          {{ txt('ip_ref3_company', 'Reference 3 (optional) — company name') }}
+          {{ txt('ip_ref3_contact', 'Reference 3 (optional) — contact name / title') }}
+          {{ txt('ip_ref3_phone', 'Reference 3 (optional) — phone / email') }}
+          {{ txt('ip_ref3_relationship', 'Reference 3 (optional) — relationship and nature of work performed') }}
+
+          <h3 style="margin:26px 0 2px; font-size:1.05rem;">Financial &amp; Business Stability</h3>
+          {{ txt('ip_years_ownership', 'Years in business under current ownership') }}
+          {{ yn('ip_bankruptcy', 'Bankruptcy or significant restructuring in the last 5 years?') }}
+          {{ txt('ip_bankruptcy_details', 'Details (if applicable)') }}
+          {{ yn('ip_liens', 'Any active liens, judgments, or unresolved legal disputes related to construction or installation work?') }}
+          {{ txt('ip_liens_details', 'Details (if applicable)') }}
+          {{ yn('ip_net_terms', 'Able to operate on Net terms (e.g. Net 15 / Net 30) for project remittances?') }}
+          {{ area('ip_growth_plans', "Briefly describe your company's growth plans or capacity goals for the next 12 months") }}
+
+          <h3 style="margin:26px 0 2px; font-size:1.05rem;">Culture &amp; Fit</h3>
+          {{ area('ip_customer_priority', "What does your company prioritize most when representing itself on a customer's property?") }}
+          {{ area('ip_complaint_handling', 'How does your team typically handle a customer concern or complaint during installation?') }}
+          {{ area('ip_anything_else',"Anything else you'd like MicroGRID to know about your company, team, or capabilities?") }}
+
+          <label style="display:flex; align-items:flex-start; gap:9px; font-weight:400; margin:20px 0 4px; cursor:pointer;">
+            <input type="checkbox" name="ip_certify" value="Yes" style="width:auto; margin:3px 0 0;">
+            <span>I certify that the information provided is true and accurate to the best of my knowledge.</span>
+          </label>
+        </div>
+
+        <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%;">Submit Application</button>
+        <div id="formMessage" style="display:none;padding:16px;border-radius:8px;text-align:center;font-weight:500;margin-top:16px"></div>
+        <p style="font-size: 0.875rem; color: var(--slate-500); margin-top: 16px; text-align: center;">Your information is secure and reviewed by our partnership team.</p>
+      </form>
+
+      <script>
+        document.getElementById('partnerForm').addEventListener('submit', async function(e) {
+          e.preventDefault();
+          const btn = document.getElementById('submitBtn');
+          const msg = document.getElementById('formMessage');
+          const form = this;
+          btn.disabled = true;
+          btn.textContent = 'Submitting...';
+          msg.style.display = 'none';
+
+          // Serialize every field by name; checkbox groups become arrays
+          const data = {};
+          new FormData(form).forEach((value, key) => {
+            if (data[key] === undefined) data[key] = value;
+            else if (Array.isArray(data[key])) data[key].push(value);
+            else data[key] = [data[key], value];
+          });
+
+          try {
+            const res = await fetch('/api/partner', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(data)
+            });
+            const result = await res.json();
+            if (res.ok) {
+              msg.style.background = 'rgba(74,222,128,0.15)';
+              msg.style.color = '#166534';
+              msg.textContent = result.message || 'Thank you! Your application has been received — our partnership team will be in touch.';
+              form.reset();
+            } else {
+              msg.style.background = 'rgba(239,68,68,0.15)';
+              msg.style.color = '#991b1b';
+              msg.textContent = result.error || 'Something went wrong. Please try again.';
+            }
+            msg.style.display = 'block';
+          } catch (err) {
+            msg.style.background = 'rgba(239,68,68,0.15)';
+            msg.style.color = '#991b1b';
+            msg.textContent = 'Network error. Please email us instead.';
+            msg.style.display = 'block';
+          }
+          btn.disabled = false;
+          btn.textContent = 'Submit Application';
+        });
+        document.getElementById('_timestamp').value = Date.now();
+
+        // Reveal the Installation Partner vetting questionnaire only when that type is selected
+        (function () {
+          var sel = document.getElementById('partnershipType');
+          var sec = document.getElementById('installSection');
+          function toggle() { sec.style.display = (sel.value === 'Installation Partner') ? 'block' : 'none'; }
+          sel.addEventListener('change', toggle);
+          toggle();
+        })();
+      </script>
+    </div>
+  </div>
+</section>
+{% endblock %}
