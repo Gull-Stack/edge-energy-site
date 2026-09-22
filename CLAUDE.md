@@ -53,7 +53,7 @@ To go live once env is set: uncomment the two "Become a Partner" links, rebuild,
 - Test install application sent 22 Sep 22:12 UTC: row landed in the Install sheet (verified via Drive). Email went via SendGrid to William; he is asked to confirm and delete the test row.
 - Greg's ownership ask: a gullstack.com Workspace file can't move to another org. Plan sent to William: he makes a copy of the Install sheet (he owns it), shares it Editor with the service account + bryce@gullstack.com, replies with the link.
 - **Next (on Claude):** when William sends the link, `vercel env rm/add INSTALL_PARTNER_SHEET_ID` to the new ID, redeploy, send one test, confirm on the thread "Aaron handoff: MICROGRID installation partner application" (To William, Cc Greg + mark@trismartsolar.com).
-- Still open from July: Aaron's 21 Jul asks (vetting-document upload, "MicroGRID" → "MICROGRID" rename) and William's 20 Aug careers-page ask — none done. Sheet header rows still old layout. SA key file still in ~/Downloads.
+- Still open from July: Aaron's 21 Jul asks (vetting-document upload, "MicroGRID" → "MICROGRID" rename) and William's 20 Aug careers-page ask — none done. Sheet header rows still old layout. SA key file in ~/Downloads DELETED by Bryce 22 Sep (key lives only in Vercel env now).
 
 ### 2026-07-09 — Review cleanup + battery image reframe (client email) — LIVE
 - Client email (via Bryce) asked: remove TriSMART-era/older reviews incl. the "Texas Freeze" one (MicroGRID launched late last year, so it's misleading), and replace the battery/inverter image so it doesn't read as mounted on the FRONT of a house / Arizona-style home.
