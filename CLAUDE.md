@@ -47,6 +47,19 @@ To go live once env is set: uncomment the two "Become a Partner" links, rebuild,
 
 ## Session Log
 
+## 2026-09-23 — Solicitations no longer email anyone
+
+- `api/contact.js`: a submission the shared filter classifies `solicitation`
+  now sends **no email at all** — not to the client, not to Bryce. It is still
+  logged (Blob / deck / delivery record), so the record is never lost. `test`
+  verdicts still mail Bryce so the pipe is provably alive.
+- Why: six "[NOT A LEAD — selling to …]" mails hit Bryce's inbox in five days
+  (same "I would like more information. Please contact me by email" template,
+  mismatched name/email). Bryce: "don't let me even see it."
+- Same change landed in monterey-bay-door, edge-energy-site, d-one-builders,
+  osborne-electric-site. The classifier itself is unchanged
+  (walkthru-labs → shared/lead-spam-filter.js).
+
 ### 2026-09-22 — Partner page restored; installation applications route to William Carter
 - **Root cause of the outage:** `/become-a-partner`, `api/partner.js` and every June–July edit were deployed from this local tree but NEVER committed. The 11 Sep deploy (commit aa5d264, spam filter) built from `main` and dropped them, so the page 404ed and the July review/image fixes reverted. **Rule: commit + push before every `vercel deploy --prebuilt`.**
 - Commit ac19b61 restores all of it and changes the Installation Partner notify default to `wcarter@gomicrogridenergy.com`. No `*_NOTIFY` or `PARTNER_NOTIFY_CC` env vars are set, so the code default is what sends. Pushed and deployed to prod; page 200, nav + footer links live, `/api/partner` answers.

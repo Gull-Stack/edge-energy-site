@@ -145,10 +145,14 @@ module.exports = async (req, res) => {
         </div>
       `;
 
+      // A solicitation gets no email at all — not to the client, not to Bryce.
+      // It is already in the log above; nobody needs to read a cold pitch to
+      // know one arrived. Test submissions still mail Bryce so the pipe is
+      // provably alive. (Bryce, 2026-09-23: "don't let me even see it.")
       const tag = isClean ? '⚡ New Lead'
         : triage.verdict === 'test' ? '[OUR TEST — not a lead]'
         : '[NOT A LEAD — selling to EDGE]';
-      await sendEmail({
+      if (triage.verdict !== 'solicitation') await sendEmail({
         to: isClean ? SALES_EMAIL : 'bryce@gullstack.com',
         from: FROM_EMAIL,
         fromName: `${name} via EDGE Energy`,
